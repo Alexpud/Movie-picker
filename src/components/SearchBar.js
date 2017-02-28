@@ -1,31 +1,16 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {Input, Button} from './common';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import  {fetchMovie} from '../actions';
 
 class SearchBar extends Component{
   state = {movieTitle: '', movieInfo: {}};
 
-  checkError(response){
-    if(response.data.Error != null)
-      return true;
-    return false;
-  }
-
   onButtonPress(){
     movieTitle = this.treatMovieName(this.state.movieTitle);
-
-    axios.get('http://www.omdbapi.com/?t'+movieTitle+'&y=&plot=short&r=json')
-      .then(response => {
-        if(!this.checkError(response))
-          this.setState({ movieInfo: response });
-        else{
-          this.setState({error: 'Something went wrong'});
-        }
-      })
-      .catch(error =>{
-        this.setState({error: error});
-      });
+    this.props.fetchMovie(movieTitle);
+    console.log(this.props);
   }
 
   render(){
@@ -54,9 +39,20 @@ const styles = {
   searchFieldStyle:{
     alignItems: 'center',
     flexDirection: 'row',
-    height: 48,
-    paddingTop: 10
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: '#ddd',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 0},
+    shadowOpacity: 0.1,
+    shadowRadius: 2
   }
 };
 
-export {SearchBar};
+const mapStateToProps = state =>{
+  console.log(state);
+  return {movie: state.movieInfo};
+};
+
+export default connect(mapStateToProps,{fetchMovie})(SearchBar);

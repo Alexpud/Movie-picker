@@ -8,8 +8,9 @@ const Input = ({value, placeholder, onChangeText, secureTextEntry }) =>{
       <TextInput
         secureTextEntry={secureTextEntry}
         placeholder = {placeholder}
-        autoCorrect = {true}
+        autoCorrect = {false}
         onChangeText = { onChangeText }
+        underlineColorAndroid = 'transparent'
         style = {inputStyle}
       />
     </View>
@@ -20,7 +21,7 @@ const styles = {
   inputStyle:{
     color: "#000",
     alignSelf: 'stretch',
-    fontSize: 18,
+    fontSize: 24,
     flex: 1,
     lineHeight: 18,
     textAlign: 'center'

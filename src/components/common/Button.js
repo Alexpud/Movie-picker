@@ -1,11 +1,13 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/EvilIcons';
 
-const Button = ({onPress, children}) =>{
+const Button = ({onPress, children, style, button}) =>{
   const {buttonStyle, textStyle} = styles;
+  const {name, size} = button;
   return(
-    <TouchableOpacity onPress = {onPress} style = {buttonStyle} >
-      <Image source = {require('../../image/magnifying-glass-search-64x64.png')} />
+    <TouchableOpacity onPress = {onPress} style = {[buttonStyle, style]} >
+      <Icon name = {name} size = {size} color = "white" />
     </TouchableOpacity>
   );
 };

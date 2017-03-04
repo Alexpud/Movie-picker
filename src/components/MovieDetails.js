@@ -11,16 +11,16 @@ class MovieDetails extends Component{
 
     return(
       <View>
-        <CardSection>
+        <CardSection style = {{backgroundColor: '#22221a'}}>
           <Image
             source={{uri: movieDetails.Poster }}
             style = {posterStyle}
           />
           <View style = {movieRatingSectionStyle}>
-            <Icon name="star" size = {40} color = "yellow" backgroundColor="#3b5998" />
+            <Icon name="star" size = {40} color = "#d3d705" backgroundColor="#3b5998" />
             <View>
               <Text style = {movieRateStyle}>{movieDetails.imdbRating}/10 </Text>
-              <Text style = {{paddingLeft: 15}}>{movieDetails.imdbVotes}</Text>
+              <Text style = {{ paddingLeft: 15}}>{movieDetails.imdbVotes}</Text>
             </View>
           </View>
         </CardSection>
@@ -43,10 +43,10 @@ const styles = {
   movieRateStyle:{
     paddingLeft: 15,
     fontSize:   16,
-    color: 'black'
+    color: 'white'
   },
   movieRateNumbersStyle:{
-    color: 'black',
+    color: 'white',
     fontSize: 20
   }
 };

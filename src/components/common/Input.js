@@ -19,6 +19,7 @@ const Input = ({value, placeholder, onChangeText, secureTextEntry }) =>{
 
 const styles = {
   inputStyle:{
+    backgroundColor: 'white',
     color: "#000",
     alignSelf: 'stretch',
     fontSize: 24,
@@ -28,8 +29,7 @@ const styles = {
   },
   containerStyle:{
     flex: 4,
-    height: 64,
-    marginLeft: 5
+    height: 64
   }
 };
 

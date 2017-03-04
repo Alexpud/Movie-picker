@@ -11,20 +11,22 @@ class Movie extends Component{
       return <MovieDetails movieDetails = {this.props.movie}/>;
     }
   }
+
   render(){
     const {movieTitle,moviePlotStyle} = styles;
+    const {movie} = this.props;
     return(
-      <Card>
-        <CardSection>
-          <Text style = {movieTitle}> {this.props.movie.Title} </Text>
+      <Card style = {{ backgroundColor: '#22221a'}}>
+        <CardSection style = {{backgroundColor: '#6d9cec'}}>
+          <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
         </CardSection>
 
-        <CardSection>
-          <Text style = {{textAlign: 'center',flex: 1}}> {this.props.movie.Genre} </Text>
+        <CardSection style = {{ backgroundColor: '#22221a'}}>
+          <Text style = {{textAlign: 'center',flex: 1, color: 'white'}}> {movie.Genre} </Text>
         </CardSection>
 
-        <CardSection>
-          <Text style = {moviePlotStyle}> {this.props.movie.Plot} </Text>
+        <CardSection style = {{ backgroundColor: '#22221a'}}>
+          <Text style = {moviePlotStyle}> {movie.Plot} </Text>
         </CardSection>
 
         {this.renderMovieDetails()}
@@ -36,12 +38,12 @@ class Movie extends Component{
 const styles = {
   movieTitle:{
     flex: 1,
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
     fontSize: 24
   },
   moviePlotStyle:{
-    color: 'black',
+    color: 'white',
     fontSize: 16
   }
 }

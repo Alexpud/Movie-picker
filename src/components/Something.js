@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {Spinner} from './common';
 import AppBar from './AppBar';
 import SearchBar from './SearchBar';
-import Movie from './Movie';
+import MovieList from './MovieList';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 class Something extends Component{
@@ -16,9 +16,10 @@ class Something extends Component{
         style={{height: 80}}
         size="large"
       />;
+    }else{
+      return <MovieList />;
     }
-    else if(this.props.response.movie)
-      return <Movie movie = {this.props.response.movie}/>;
+
   }
 
   render(){
@@ -39,7 +40,8 @@ const styles = {
 };
 
 const mapStateToProps = state =>{
-  return {response: state.movieInfo};
+  console.log(state);
+  return {response: state.movies};
 };
 
 export default connect(mapStateToProps)(Something);

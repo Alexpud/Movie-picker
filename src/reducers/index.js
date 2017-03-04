@@ -3,6 +3,6 @@ import MovieReducer from './MovieReducer';
 import AppBarReducer from './AppBarReducer';
 
 export default combineReducers({
-  movieInfo: MovieReducer,
+  movies: MovieReducer,
   appBar: AppBarReducer
 });

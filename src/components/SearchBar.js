@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Input, Button} from './common';
 import { connect } from 'react-redux';
-import  {fetchMovie, hideSearchBar} from '../actions';
+import  {fetchMovie, fetchMovies, hideSearchBar} from '../actions';
 
 class SearchBar extends Component{
   state = {movieTitle: '', movieInfo: {}};
@@ -15,12 +15,13 @@ class SearchBar extends Component{
   onButtonPress(movieTitle){
     this.setState({movieTitle});
     var temp_movieTitle = this.treatMovieName(movieTitle);
-    this.props.fetchMovie(temp_movieTitle);
+    this.props.fetchMovies(temp_movieTitle);
   }
 
   treatMovieName(movieName){
     if(movieName.length == 1)
       return movieName;
+      
     return movieName.replace(' ','+');
   }
 
@@ -58,4 +59,4 @@ const mapStateToProps = state =>{
   return {movie: state.movieInfo};
 };
 
-export default connect(mapStateToProps,{fetchMovie, hideSearchBar})(SearchBar);
+export default connect(mapStateToProps,{fetchMovie, fetchMovies, hideSearchBar})(SearchBar);

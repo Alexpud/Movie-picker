@@ -1,19 +1,41 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {ListView} from 'react-native';
+import {ListView, View} from 'react-native';
 import MovieItem from './MovieItem';
 
 class MovieList extends Component{
 
+
+  renderList(){
+    if(this._mounted){
+      console.log(this._mounted);
+      return(
+        <ListView
+          enableEmptySections
+          dataSource = {this.dataSource}
+          renderRow = {this.renderRow}
+        />
+      );
+    }
+    return <View> </View>;
+  }
+
   componentWillMount() {
+    this._mounted = true;
     this.createDataSource(this.props.movies);
+  }
+
+  componentWillUnmount(){
+    this._mounted = false;
+
   }
 
   componentWillReceiveProps(nextProps) {
     // nextProps are the next set of props that this component
     // will be rendered with
     // this.props is still the old set of props
-
+    console.log(nextProps);
+    console.log(this._mounted);
     this.createDataSource(nextProps);
   }
 
@@ -30,12 +52,10 @@ class MovieList extends Component{
   }
 
   render(){
-    return(
-      <ListView
-        enableEmptySections
-        dataSource = {this.dataSource}
-        renderRow = {this.renderRow}
-      />
+    return (
+      <View>
+        {this.renderList()}
+      </View>
     );
   }
 }

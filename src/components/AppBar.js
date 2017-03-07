@@ -51,9 +51,7 @@ const styles = {
 }
 
 const mapStateToProps = state =>{
-  console.log(state);
   const {searchbar} = state.appBar;
-
   return {searchbar};
 };
 

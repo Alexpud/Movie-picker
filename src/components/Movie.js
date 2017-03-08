@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Text, View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import MovieDetails from './MovieDetails';
+import AppBar from './AppBar';
 import {Card, CardSection} from './common';
 import {fetchMovie} from '../actions';
 
@@ -26,22 +27,23 @@ class Movie extends Component{
   }
 
   render(){
-    const {movieTitle,moviePlotStyle} = styles;
+    const {cardStyle,movieTitle,moviePlotStyle} = styles;
     const {movie} = this.props;
-    console.log(movie);
     return(
-      <Card style = {{ backgroundColor: '#22221a'}}>
-       <CardSection style = {{backgroundColor: '#6d9cec'}}>
-         <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
-       </CardSection>
+      <Card style = {cardStyle}>
+        <AppBar changeScene= {true} style = {{marginTop: 0}}/>
+        
+        <CardSection style={{marginTop: 0}}>
+          <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
+        </CardSection>
 
-       <CardSection style = {{ backgroundColor: '#22221a'}}>
-         <Text style = {{textAlign: 'center',flex: 1, color: 'white'}}> {movie.Genre} </Text>
-       </CardSection>
+        <CardSection style = {{ backgroundColor: '#444444'}}>
+          <Text style = {{textAlign: 'center',flex: 1, color: 'white'}}> {movie.Genre} </Text>
+        </CardSection>
 
-       <CardSection style = {{ backgroundColor: '#22221a'}}>
-         <Text style = {moviePlotStyle}> {movie.Plot} </Text>
-       </CardSection>
+        <CardSection style = {{ backgroundColor: '#444444'}}>
+          <Text style = {moviePlotStyle}> {movie.Plot} </Text>
+        </CardSection>
 
        {this.renderMovieDetails()}
       </Card>
@@ -50,8 +52,15 @@ class Movie extends Component{
 };
 
 const styles = {
+  cardStyle:{
+    backgroundColor:'#444444',
+    borderWidth:0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0
+  },
   movieTitle:{
-    color: 'white',
+    color: 'black',
     textAlign: 'center',
     fontSize: 24
   },

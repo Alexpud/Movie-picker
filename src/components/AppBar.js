@@ -17,27 +17,41 @@ class AppBar extends Component{
   }
 
   topBars(){
+    // If it should display the searchbar
     if(this.props.searchbar){
-      return <SearchBar/>;
+      if(this.props.changeScene){
+        return <SearchBar style = {{color: 'white'}} changeScene = {this.props.changeScene}/>;
+      }
+      return <SearchBar style = {{color: 'white'}}/>;
     }
+
     return (
       <Text style = {styles.appNameStyle}> Movie picker </Text>
     );
   }
 
   render(){
+    const {barStyle, buttonStyle, appNameStyle} = styles;
     return(
-      <CardSection style = {{backgroundColor:'#6d9cec'}}>
+      <CardSection style = {[barStyle, this.props.style]}>
         <View style = {{flex: 6, height: 48}}>
           {this.topBars()}
         </View>
-        <Button button = {{name: 'search', size: 48}} style = {styles.buttonStyle} onPress= {this.onPress.bind(this)} style = {{marginTop: 5}}/>
+        <Button
+          button = {{name: 'search', size: 48}}
+          style = {buttonStyle}
+          onPress= {this.onPress.bind(this)}
+          style = {{marginTop: 5}}
+        />
       </CardSection>
     );
   }
 }
 
 const styles = {
+  barStyle:{
+    backgroundColor:'#444444'
+  },
   buttonStyle:{
     alignItems: 'flex-end',
     justifyContent: 'flex-end'

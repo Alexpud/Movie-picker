@@ -6,6 +6,7 @@ import {
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILED
 } from './types';
+
 export const fetchMovies = (title) =>{
   return(dispatch) =>{
     dispatch({type: FETCH_MOVIES});

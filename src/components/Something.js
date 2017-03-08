@@ -24,8 +24,8 @@ class Something extends Component{
 
   render(){
     return(
-      <View style = {{flexDirection: 'column'}}>
-        <AppBar/>
+      <View style = {styles.appStyle}>
+        <AppBar />
         {this.checkState()}
       </View>
     );
@@ -33,6 +33,10 @@ class Something extends Component{
 }
 
 const styles = {
+  appStyle:{
+    backgroundColor: '#DFDFDF',
+    flexDirection: 'column'
+  },
   spinnerStyle:{
     flex: 1,
     justifyContent:'center'

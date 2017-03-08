@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ListView, View} from 'react-native';
 import MovieItem from './MovieItem';
-
+import AppBar from './AppBar';
 class MovieList extends Component{
 
 
   renderList(){
     if(this._mounted){
-      console.log(this._mounted);
       return(
         <ListView
-          enableEmptySections
+          removeClippedSubviews={false}
           dataSource = {this.dataSource}
           renderRow = {this.renderRow}
+          scrollRenderAheadDistance = {1800}
         />
       );
     }
@@ -34,8 +34,6 @@ class MovieList extends Component{
     // nextProps are the next set of props that this component
     // will be rendered with
     // this.props is still the old set of props
-    console.log(nextProps);
-    console.log(this._mounted);
     this.createDataSource(nextProps);
   }
 
@@ -53,7 +51,7 @@ class MovieList extends Component{
 
   render(){
     return (
-      <View>
+      <View style= {{backgroundColor: '#DFDFDF'}}>
         {this.renderList()}
       </View>
     );

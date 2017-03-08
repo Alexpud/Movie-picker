@@ -21,7 +21,6 @@ export default(state = INITIAL_STATE, action) =>{
     case FETCH_MOVIE:
       return {...state, loading: true};
     case FETCH_MOVIE_SUCCESS:
-      console.log("received");
       return {...state, movie: action.payload, loading: false};
     case FETCH_MOVIES_SUCCESS:
       return {...state, movies: action.payload, loading: false};

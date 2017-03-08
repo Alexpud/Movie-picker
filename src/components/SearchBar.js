@@ -1,15 +1,22 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Actions} from 'react-native-router-flux';
 import {Input, Button} from './common';
 import { connect } from 'react-redux';
-import  {fetchMovie, fetchMovies, hideSearchBar} from '../actions';
+import  {
+  fetchMovie,
+  fetchMovies,
+  hideSearchBar,
+  typeSearchBar
+} from '../actions';
 
 class SearchBar extends Component{
   state = {movieTitle: '', movieInfo: {}};
 
   onBackButtonPress(){
-     this.props.hideSearchBar();
+    Actions.Something();
+    //this.props.hideSearchBar();
   }
 
   onButtonPress(movieTitle){
@@ -21,21 +28,32 @@ class SearchBar extends Component{
   treatMovieName(movieName){
     if(movieName.length == 1)
       return movieName;
-      
+
     return movieName.replace(' ','+');
   }
 
+  onChangeText(movieTitle){
+    this.props.typeSearchBar(movieTitle);
+    if(this.props.changeScene)
+      Actions.Something();
+    else{
+      this.onButtonPress(movieTitle)
+    }
+  }
+
   render(){
+    const {appBar} = this.props;
     return(
       <View style={styles.searchFieldStyle}>
         <Button
+          disabled
           button = {{name: 'chevron-left', size: 60}}
           onPress = {this.onBackButtonPress.bind(this)}
         />
         <Input
+          value = {appBar.searchValue}
           placeholder = "Name of the movie"
-          onChangeText = {(movieTitle) => this.onButtonPress(movieTitle)}
-          style = {styles.inputFieldStyle}
+          onChangeText = {(movieTitle) => this.onChangeText(movieTitle)}
         />
       </View>
     );
@@ -56,7 +74,12 @@ const styles = {
 
 const mapStateToProps = state =>{
   console.log(state);
-  return {movie: state.movieInfo};
+  return {movie: state.movieInfo, appBar: state.appBar};
 };
 
-export default connect(mapStateToProps,{fetchMovie, fetchMovies, hideSearchBar})(SearchBar);
+export default connect(mapStateToProps,{
+  fetchMovie,
+  fetchMovies,
+  hideSearchBar,
+  typeSearchBar
+})(SearchBar);

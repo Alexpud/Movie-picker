@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "react": "15.4.2",
-    "react-native": "0.41.2",
+    "react-native": "^0.42.0",
     "react-native-material-design-searchbar": "^1.1.0",
     "react-native-router-flux": "^3.38.0",
     "react-native-searchbar": "^1.7.0",

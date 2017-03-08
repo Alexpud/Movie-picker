@@ -11,7 +11,7 @@ class MovieDetails extends Component{
 
     return(
       <View>
-        <CardSection style = {{backgroundColor: '#22221a'}}>
+        <CardSection style = {{backgroundColor: '#444444'}}>
           <Image
             source={{uri: movieDetails.Poster }}
             style = {posterStyle}
@@ -32,8 +32,8 @@ class MovieDetails extends Component{
 const styles = {
 
   posterStyle:{
-    width: 200,
-    height: 250
+    width: 100,
+    height: 100
   },
   movieRatingSectionStyle:{
     paddingLeft: 15,

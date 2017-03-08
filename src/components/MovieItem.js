@@ -13,25 +13,29 @@ class MovieItem extends Component{
   }
 
   onRowPress(){
-    Actions.movie({movieTitle: this.props.movie.Title});
+    Actions.Movie({movieTitle: this.props.movie.Title});
   }
 
   render(){
-    const {movieTitle,moviePlotStyle, posterStyle} = styles;
+    const {
+      cardStyle,
+      movieTitle,
+      moviePlotStyle,
+      posterStyle
+    } = styles;
     const {movie} = this.props;
 
     return(
-
-        <Card style = {{ backgroundColor: '#22221a'}}>
-          <CardSection style = {{backgroundColor: '#6d9cec'}}>
-            <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
-          </CardSection>
+        <Card style = {cardStyle}>
           <TouchableWithoutFeedback onPress = {this.onRowPress.bind(this)}>
             <Image
               source={{uri: movie.Poster }}
               style = {posterStyle}
             />
           </TouchableWithoutFeedback>
+          <CardSection style = {{backgroundColor: '#FFFFFF', flex: 6}}>
+            <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
+          </CardSection>
         </Card>
 
     );
@@ -39,11 +43,16 @@ class MovieItem extends Component{
 };
 
 const styles = {
+  cardStyle:{
+    flexDirection: 'row',
+    marginLeft: 20,
+    marginRight: 20
+  },
   movieTitle:{
     flex: 1,
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 24
+    color: 'black',
+    textAlign: 'left',
+    fontSize: 20
   },
   moviePlotStyle:{
     color: 'white',
@@ -51,8 +60,8 @@ const styles = {
   },
   posterStyle:{
     alignSelf: 'center',
-    width: 200,
-    height: 250
+    width: 100,
+    height: 80
   }
 };
 

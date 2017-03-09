@@ -16,10 +16,9 @@ class Something extends Component{
         style={{height: 80}}
         size="large"
       />;
-    }else{
-      return <MovieList />;
     }
-
+    else
+      return <MovieList />;
   }
 
   render(){
@@ -44,7 +43,6 @@ const styles = {
 };
 
 const mapStateToProps = state =>{
-  console.log(state);
   return {response: state.movies};
 };
 

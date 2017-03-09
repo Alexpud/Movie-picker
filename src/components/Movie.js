@@ -22,45 +22,70 @@ class Movie extends Component{
 
   renderMovieDetails(){
     if( this.props.movie){
-      return <MovieDetails movieDetails = {this.props.movie}/>;
+      return <MovieDetails movieDetails = {this.props.movie} style = {{flex: 3, backgroundColor: '#444444'}}/>;
     }
   }
 
   render(){
-    const {cardStyle,movieTitle,moviePlotStyle} = styles;
+
+    const {
+      cardStyle,
+      movieTitle,
+      moviePlotStyle,
+      titleAndPlotSectionStyle
+    } = styles;
     const {movie} = this.props;
+
     return(
-      <Card style = {cardStyle}>
-        <AppBar changeScene= {true} style = {{marginTop: 0}}/>
-        
-        <CardSection style={{marginTop: 0}}>
-          <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
-        </CardSection>
+      <View style = {cardStyle}>
+        <Card style = {cardStyle}>
+          <AppBar changeScene= {true} style = {{margin: 0, padding: 0, paddingBottom: 40}}/>
+            <CardSection style ={{margin: 0, padding: 0,flex: 2, backgroundColor: '#444444'}}>
+              <View style = {{flex: 4}}>
+                <CardSection style = {titleAndPlotSectionStyle}>
 
-        <CardSection style = {{ backgroundColor: '#444444'}}>
-          <Text style = {{textAlign: 'center',flex: 1, color: 'white'}}> {movie.Genre} </Text>
-        </CardSection>
+                  <CardSection style={{marginTop: 0, backgroundColor: '#444444'}}>
+                    <Text style = {movieTitle}> {movie.Title} ({movie.Year}) </Text>
+                  </CardSection>
 
-        <CardSection style = {{ backgroundColor: '#444444'}}>
-          <Text style = {moviePlotStyle}> {movie.Plot} </Text>
-        </CardSection>
+                  <CardSection style = {{ backgroundColor: '#444444'}}>
+                    <Text style = {{textAlign: 'center',flex: 1, color: 'white'}}> {movie.Genre} </Text>
+                  </CardSection>
 
-       {this.renderMovieDetails()}
-      </Card>
+                  <CardSection style = {{ backgroundColor: '#444444', paddingTop: 15}}>
+                    <Text style = {moviePlotStyle}> {movie.Plot} </Text>
+                  </CardSection>
+
+                  <View style = {{backgroundColor: '#444444', flex: 1}}></View>
+                </CardSection>
+              </View>
+            <MovieDetails movieDetails = {this.props.movie} style = {{flex: 3, backgroundColor: '#444444'}}/>
+          </CardSection>
+        </Card>
+      </View>
     );
   }
 };
 
 const styles = {
+  titleAndPlotSectionStyle:{
+    flex: 1,
+    flexDirection: 'column',
+    margin: 0,
+    padding: 0,
+  },
   cardStyle:{
-    backgroundColor:'#444444',
-    borderWidth:0,
+    flex: 3,
+    backgroundColor: '#444444',
+    flexDirection: 'column',
+    borderWidth: 0,
     marginLeft: 0,
     marginRight: 0,
-    marginTop: 0
+    marginTop: 0,
+    padding: 0
   },
   movieTitle:{
-    color: 'black',
+    color: 'white',
     textAlign: 'center',
     fontSize: 24
   },

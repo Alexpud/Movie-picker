@@ -7,20 +7,24 @@ class MovieDetails extends Component{
 
   render(){
     const {movieDetails} = this.props;
-    const {movieRateStyle, movieRatingSectionStyle, posterStyle} = styles;
-
+    const { cardSectionStyle,
+      movieRateStyle,
+      movieRatingSectionStyle,
+      posterStyle,
+      sectionStyle
+    } = styles;
+    console.log(movieDetails);
     return(
-      <View>
-        <CardSection style = {{backgroundColor: '#444444'}}>
-          <Image
-            source={{uri: movieDetails.Poster }}
-            style = {posterStyle}
-          />
+      <View style = {[this.props.style, sectionStyle]}>
+        <CardSection style = {cardSectionStyle}>
+            <Image
+              source={{uri: movieDetails.Poster }}
+              style = {posterStyle}
+            />
           <View style = {movieRatingSectionStyle}>
-            <Icon name="star" size = {40} color = "#d3d705" backgroundColor="#3b5998" />
+            <Icon name="star" size = {40} color = "white" backgroundColor="#3b5998" />
             <View>
               <Text style = {movieRateStyle}>{movieDetails.imdbRating}/10 </Text>
-              <Text style = {{ paddingLeft: 15}}>{movieDetails.imdbVotes}</Text>
             </View>
           </View>
         </CardSection>
@@ -30,19 +34,27 @@ class MovieDetails extends Component{
 }
 
 const styles = {
-
+  cardSectionStyle:{
+    backgroundColor: '#444444',
+    flex: 1,
+    flexDirection: 'column',
+    margin: 0
+  },
+  sectionStyle:{
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0
+  },
   posterStyle:{
-    width: 100,
-    height: 100
+    width: 150,
+    height: 250
   },
   movieRatingSectionStyle:{
-    paddingLeft: 15,
-    flex: 1,
     flexDirection: 'row'
   },
   movieRateStyle:{
-    paddingLeft: 15,
-    fontSize:   16,
+    fontSize:   30,
     color: 'white'
   },
   movieRateNumbersStyle:{

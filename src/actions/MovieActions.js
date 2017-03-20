@@ -24,7 +24,6 @@ export const fetchMovies = (title) =>{
 };
 
 export const fetchMovie = (title) =>{
-  console.log("fetch movie");
   return(dispatch) =>{
     dispatch({type: FETCH_MOVIE});
     axios.get('http://www.omdbapi.com/?t='+title+'&y=&plot=short&r=json')

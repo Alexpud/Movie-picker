@@ -96,9 +96,7 @@ const styles = {
 };
 
 const mapStateToProps = state =>{
-  console.log(state);
-  const movie = state.movies.movie;
-  console.log(movie);
+  const {movie} = state.movies;
   return {movie};
 }
 

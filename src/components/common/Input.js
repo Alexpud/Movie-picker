@@ -8,6 +8,7 @@ const Input = (props) =>{
   return(
     <View style = {containerStyle}>
       <TextInput
+        value = {value}
         secureTextEntry={secureTextEntry}
         placeholder = {placeholder}
         placeholderTextColor = "#747474"

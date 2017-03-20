@@ -5,7 +5,6 @@ import {
 } from './types';
 
 export const typeSearchBar = (text) =>{
-  console.log("Type");
   return{
     type: TYPE_SEARCHBAR,
     payload: text

@@ -13,7 +13,7 @@ class MovieDetails extends Component{
       posterStyle,
       sectionStyle
     } = styles;
-    console.log(movieDetails);
+
     return(
       <View style = {[this.props.style, sectionStyle]}>
         <CardSection style = {cardSectionStyle}>
@@ -25,6 +25,7 @@ class MovieDetails extends Component{
             <Icon name="star" size = {40} color = "white" backgroundColor="#3b5998" />
             <View>
               <Text style = {movieRateStyle}>{movieDetails.imdbRating}/10 </Text>
+              <Text>{movieDetails.imdbVotes}</Text>
             </View>
           </View>
         </CardSection>
@@ -51,10 +52,10 @@ const styles = {
     height: 250
   },
   movieRatingSectionStyle:{
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
   movieRateStyle:{
-    fontSize:   30,
+    fontSize:   16,
     color: 'white'
   },
   movieRateNumbersStyle:{

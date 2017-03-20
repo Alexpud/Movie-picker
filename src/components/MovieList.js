@@ -59,7 +59,6 @@ class MovieList extends Component{
 }
 
 const mapStateToProps = state =>{
-  console.log(state);
   const {movies} = state.movies;
   return {movies};
 };

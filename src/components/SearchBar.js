@@ -28,7 +28,7 @@ class SearchBar extends Component{
   treatMovieName(movieName){
     if(movieName.length == 1)
       return movieName;
-
+    return movieName;
     return movieName.replace(' ','+');
   }
 
@@ -54,6 +54,7 @@ class SearchBar extends Component{
           value = {appBar.searchValue}
           placeholder = "Name of the movie"
           onChangeText = {(movieTitle) => this.onChangeText(movieTitle)}
+          onChange = {(movieTitle) => this.onChangeText(movieTitle)}
         />
       </View>
     );
@@ -73,7 +74,6 @@ const styles = {
 };
 
 const mapStateToProps = state =>{
-  console.log(state);
   return {movie: state.movieInfo, appBar: state.appBar};
 };
 

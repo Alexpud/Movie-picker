@@ -5,7 +5,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  'searchValue': 'a',
+  'searchValue': '',
   'searchbar': false
 };
 
